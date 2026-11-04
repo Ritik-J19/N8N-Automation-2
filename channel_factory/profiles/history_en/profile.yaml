@@ -1,0 +1,23 @@
+name: History Explainers
+language: en
+enabled: true
+audience: adults interested in accessible history
+tone: clear, curious, evidence-aware
+content_type: history_explainer
+posting_cap_per_week: 3
+narration_mode_default: recorded
+visual_style: archival images, maps, and restrained captions
+music_folder: data/music/history_en
+safety_ruleset_id: history_factual_v1
+output_formats: ["16:9"]
+made_for_kids: false
+disclosure_settings:
+  mention_ai_images: true
+  mention_synthetic_narration: true
+required_extra_schema_fields: [sources, claims_to_verify]
+duplicate_thresholds:
+  title: 0.78
+  narration: 0.82
+  lesson_character: 0.90
+structure_window: 4
+

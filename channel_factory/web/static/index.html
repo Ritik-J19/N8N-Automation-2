@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="dark light">
+  <title>Channel Factory — Mission Control</title>
+  <link rel="icon" href="/static/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="/static/dashboard.css">
+  <script defer src="/static/dashboard.js"></script>
+</head>
+<body>
+  <div id="login" class="login-shell">
+    <section class="login-story" aria-hidden="true">
+      <div class="wordmark"><span class="brand-mark">CF</span><span>Channel Factory</span></div>
+      <div class="story-copy"><p class="kicker">EDITORIAL MISSION CONTROL</p><h1>Every production stage.<br>One trusted view.</h1><p>Observe the complete video workflow without weakening the human approval boundary.</p></div>
+      <div class="login-stage-rail"><span class="complete">Draft</span><span class="complete">Review</span><span class="active">Produce</span><span>Export</span></div>
+    </section>
+    <main class="login-panel" aria-labelledby="login-title">
+      <div class="login-panel-head"><span class="status-pulse"></span><span>Local engine ready</span></div>
+      <p class="kicker">SECURE ACCESS</p><h2 id="login-title">Open mission control</h2><p class="muted">Use the private dashboard token configured for this workspace.</p>
+      <form id="login-form"><label for="access-token">Access token</label><input id="access-token" name="token" type="password" maxlength="256" autocomplete="current-password" required autofocus><button class="button primary full" type="submit">Enter workspace <svg class="icon"><use href="/static/icons.svg#arrow"></use></svg></button><p id="login-error" class="form-error" role="alert"></p></form>
+      <p class="login-note">Loopback only · Signed session · No cloud dependency</p>
+    </main>
+  </div>
+
+  <div id="app" class="app-shell" hidden>
+    <aside class="sidebar">
+      <div class="brand"><span class="brand-mark small">CF</span><div><strong>Channel Factory</strong><span>Mission Control</span></div></div>
+      <div class="workspace-chip"><span class="status-pulse"></span><div><strong id="workspace-name">Local workspace</strong><small>Engine online</small></div></div>
+      <nav id="nav" aria-label="Primary navigation">
+        <button data-view="overview" class="nav-item active"><svg class="icon"><use href="/static/icons.svg#overview"></use></svg><span>Overview</span></button>
+        <button data-view="pipeline" class="nav-item"><svg class="icon"><use href="/static/icons.svg#pipeline"></use></svg><span>Pipeline</span><small id="pipeline-nav-count"></small></button>
+        <button data-view="channels" class="nav-item"><svg class="icon"><use href="/static/icons.svg#channels"></use></svg><span>Channels</span></button>
+        <button data-view="reliability" class="nav-item"><svg class="icon"><use href="/static/icons.svg#reliability"></use></svg><span>Reliability</span><small id="incident-nav-count"></small></button>
+        <button data-view="system" class="nav-item"><svg class="icon"><use href="/static/icons.svg#system"></use></svg><span>System</span></button>
+      </nav>
+      <div class="sidebar-foot"><button id="theme-toggle" class="nav-item"><svg class="icon"><use href="/static/icons.svg#sun"></use></svg><span>Switch theme</span></button><button id="logout" class="nav-item"><svg class="icon"><use href="/static/icons.svg#logout"></use></svg><span>Sign out</span></button><p id="schema-label">Checking schema…</p></div>
+    </aside>
+
+    <section class="workspace">
+      <header class="topbar">
+        <div class="page-heading"><p id="page-kicker">MISSION CONTROL</p><h1 id="page-title">Overview</h1></div>
+        <div class="command-area"><button id="command-trigger" class="command-trigger"><svg class="icon"><use href="/static/icons.svg#search"></use></svg><span>Search or run a command</span><kbd>Ctrl K</kbd></button><div id="connection-state" class="connection-state"><span class="status-pulse"></span><span>Live</span></div><select id="refresh-interval" class="refresh-select" aria-label="Auto-refresh interval"><option value="0">Manual</option><option value="15">15s</option><option value="30">30s</option><option value="60">60s</option></select><button id="refresh" class="icon-button" aria-label="Refresh now"><svg class="icon"><use href="/static/icons.svg#refresh"></use></svg></button></div>
+      </header>
+
+      <main class="content">
+        <section id="view-overview" class="view active" aria-labelledby="page-title">
+          <div id="health-strip" class="health-strip loading-line"></div>
+          <div id="metric-grid" class="metric-grid"></div>
+          <article class="panel stage-panel"><div class="panel-head"><div><h2>Production flow</h2><p>Current work distributed across the governed pipeline</p></div><button class="text-button" data-goto="pipeline">Open pipeline <svg class="icon"><use href="/static/icons.svg#arrow"></use></svg></button></div><div id="stage-rail" class="stage-rail"></div></article>
+          <div class="overview-grid">
+            <article class="panel attention-panel"><div class="panel-head"><div><h2>Needs attention</h2><p>Incidents and decisions ordered by urgency</p></div><span id="attention-count" class="count-pill">0</span></div><div id="attention-list" class="attention-list"></div></article>
+            <article class="panel activity-panel"><div class="panel-head"><div><h2>Live activity</h2><p>Latest workflow and system events</p></div></div><div id="activity-list" class="activity-list"></div></article>
+            <article class="panel compact-panel"><div class="panel-head"><div><h2>Channel capacity</h2><p>Weekly export utilization</p></div></div><div id="capacity-list" class="capacity-list"></div></article>
+            <article class="panel compact-panel"><div class="panel-head"><div><h2>Backup posture</h2><p>Latest verified recovery point</p></div><button class="icon-button small" id="quick-backup" aria-label="Create backup"><svg class="icon"><use href="/static/icons.svg#backup"></use></svg></button></div><div id="backup-health" class="backup-health"></div></article>
+            <article class="governance-callout"><svg class="icon"><use href="/static/icons.svg#reliability"></use></svg><div><strong>Human approval boundary is enforced</strong><p>Review remains terminal-only. Mission Control cannot approve content.</p></div><code>python -m channel_factory review &lt;job-id&gt;</code></article>
+          </div>
+        </section>
+
+        <section id="view-pipeline" class="view">
+          <div class="section-heading"><div><h2>Production pipeline</h2><p>Search, sort, filter, inspect, and export operational records.</p></div><div class="section-actions"><button id="export-csv" class="button secondary"><svg class="icon"><use href="/static/icons.svg#download"></use></svg>CSV</button><button id="export-json" class="button secondary"><svg class="icon"><use href="/static/icons.svg#download"></use></svg>JSON</button></div></div>
+          <article class="panel pipeline-table-panel"><div class="toolbar"><label class="search-field"><svg class="icon"><use href="/static/icons.svg#search"></use></svg><input id="job-search" type="search" placeholder="Search title, ID, topic, or channel"></label><select id="channel-filter" aria-label="Filter by channel"><option value="">All channels</option></select><select id="status-filter" aria-label="Filter by status"><option value="">All stages</option></select><span id="job-count" class="result-count"></span></div><div class="table-wrap"><table aria-describedby="job-count"><thead><tr><th><button data-sort="title">Job</button></th><th><button data-sort="channel">Channel</button></th><th><button data-sort="status">Stage</button></th><th>Health</th><th><button data-sort="updated_at">Updated</button></th><th><span class="visually-hidden">Actions</span></th></tr></thead><tbody id="jobs-body"></tbody></table></div><div class="pagination"><button id="previous-page" class="button secondary">Previous</button><span id="page-label"></span><button id="next-page" class="button secondary">Next</button></div></article>
+        </section>
+
+        <section id="view-channels" class="view"><div class="section-heading"><div><h2>Channel governance</h2><p>Capacity, formats, audience settings, and production policy.</p></div></div><div id="profile-grid" class="profile-grid"></div></section>
+
+        <section id="view-reliability" class="view"><div class="section-heading"><div><h2>Reliability & recovery</h2><p>Verified snapshots, incidents, and operational safeguards.</p></div><button id="create-backup" class="button primary"><svg class="icon"><use href="/static/icons.svg#backup"></use></svg>Create backup</button></div><div id="reliability-metrics" class="metric-grid reliability-metrics"></div><div class="reliability-grid"><article class="panel"><div class="panel-head"><div><h2>Backup history</h2><p>Integrity and schema checks</p></div></div><div id="backup-list" class="list-stack"></div></article><article class="panel"><div class="panel-head"><div><h2>Incident register</h2><p>Active workflow failures</p></div></div><div id="incident-list" class="list-stack"></div></article></div></section>
+
+        <section id="view-system" class="view"><div class="section-heading"><div><h2>System readiness</h2><p>Runtime, storage, adapters, and security posture.</p></div></div><div id="system-grid" class="system-grid"></div><article class="panel security-panel"><div class="panel-head"><div><h2>Security controls</h2><p>Defense-in-depth for the local control plane</p></div><span class="status-badge complete"><svg class="icon"><use href="/static/icons.svg#check"></use></svg>Enforced</span></div><div id="security-grid" class="security-grid"></div></article></section>
+      </main>
+    </section>
+  </div>
+
+  <dialog id="job-dialog" class="job-dialog" aria-labelledby="drawer-title"><header class="drawer-head"><div><div class="drawer-context"><span id="drawer-status"></span><span id="drawer-channel"></span></div><h2 id="drawer-title" tabindex="-1">Workflow job</h2><p id="drawer-subtitle"></p></div><div class="drawer-head-actions"><button id="copy-job-id" class="button secondary"><svg class="icon"><use href="/static/icons.svg#copy"></use></svg>Copy ID</button><button id="close-drawer" class="icon-button" aria-label="Close inspector"><svg class="icon"><use href="/static/icons.svg#close"></use></svg></button></div></header><nav id="drawer-tabs" class="drawer-tabs" aria-label="Job details"><button data-tab="overview" class="active">Overview</button><button data-tab="timeline">Timeline</button><button data-tab="script">Script</button><button data-tab="assets">Assets</button><button data-tab="incidents">Incidents</button></nav><div id="drawer-content" class="drawer-content"></div></dialog>
+
+  <dialog id="command-dialog" class="command-dialog" aria-labelledby="command-title"><div class="command-input"><svg class="icon"><use href="/static/icons.svg#search"></use></svg><label class="visually-hidden" for="command-query">Search commands and jobs</label><input id="command-query" autocomplete="off" placeholder="Navigate, search jobs, or run a safe action…"><kbd>Esc</kbd></div><h2 id="command-title" class="visually-hidden">Command palette</h2><div id="command-results" class="command-results"></div><footer><span>↑↓ Navigate</span><span>Enter Select</span><span>Approval actions are not available here</span></footer></dialog>
+  <dialog id="confirm-dialog" class="confirm-dialog" aria-labelledby="confirm-title"><div class="confirm-icon"><svg class="icon"><use href="/static/icons.svg#alert"></use></svg></div><h2 id="confirm-title">Confirm action</h2><p id="confirm-message"></p><div class="confirm-actions"><button id="confirm-cancel" class="button secondary">Cancel</button><button id="confirm-accept" class="button primary">Continue</button></div></dialog>
+  <div id="toast-region" class="toast-region" aria-live="polite"></div>
+</body>
+</html>

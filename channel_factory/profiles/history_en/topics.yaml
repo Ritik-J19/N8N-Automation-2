@@ -1,0 +1,17 @@
+topics:
+  - id: hist-antikythera
+    title: The Antikythera mechanism
+    key_facts:
+      - Recovered from a shipwreck near Antikythera
+      - Used geared calculations for astronomical cycles
+  - id: hist-postal-roads
+    title: How early postal roads connected empires
+    key_facts:
+      - Relay systems reduced message travel time
+      - Road networks served administration and trade
+  - id: hist-ice-trade
+    title: The nineteenth-century natural ice trade
+    key_facts:
+      - Ice was harvested and shipped before mechanical refrigeration
+      - Insulation and logistics made long-distance delivery possible
+

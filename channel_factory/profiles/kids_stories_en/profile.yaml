@@ -1,0 +1,28 @@
+name: Kids Stories
+language: en
+enabled: false
+audience: children ages 4-8 with an adult nearby
+tone: warm, playful, reassuring
+content_type: original_kids_story
+posting_cap_per_week: 3
+narration_mode_default: recorded
+visual_style: bright original characters with simple readable scenes
+music_folder: data/music/kids_stories_en
+safety_ruleset_id: child_safety_v1
+output_formats: ["16:9", "9:16"]
+made_for_kids: true
+disclosure_settings:
+  mention_ai_images: true
+  mention_synthetic_narration: true
+required_extra_schema_fields: [lesson, characters]
+duplicate_thresholds:
+  title: 0.75
+  narration: 0.80
+  lesson_character: 0.70
+structure_window: 4
+character_bible:
+  - name: Mira
+    description: A thoughtful child inventor who asks before acting.
+  - name: Pip
+    description: A shy paper kite who becomes brave with patient help.
+

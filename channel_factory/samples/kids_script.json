@@ -1,0 +1,25 @@
+{
+  "title": "Mira and the Mended Kite",
+  "channel": "kids_stories_en",
+  "content_type": "original_kids_story",
+  "language": "en",
+  "topic_id": "kids-mended-kite",
+  "summary": "Mira and Pip repair a torn kite by calmly asking a neighbor for help.",
+  "lesson": "Asking for help can be brave.",
+  "characters": ["Mira", "Pip"],
+  "scenes": [
+    {
+      "scene_id": "scene-1",
+      "narration": "Pip's paper tail tore in the breeze, and Mira stopped to listen before making a plan.",
+      "on_screen_text": "Stop, listen, and make a plan",
+      "image_prompt": "original child inventor and friendly paper kite in a sunny garden",
+      "image_file": "scene-1.png",
+      "image_credit": {"source": "Channel Factory sample artwork", "license": "owned", "attribution": "Created for the sample"},
+      "duration_sec": 5
+    }
+  ],
+  "safety_flags": [],
+  "disclosure_required": false,
+  "narration_mode": "recorded"
+}
+

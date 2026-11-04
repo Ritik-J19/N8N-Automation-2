@@ -1,0 +1,12 @@
+.venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.env
+channel_factory/data/*
+!channel_factory/data/.gitkeep
+demo-workspace*/
+dist/
+build/
+*.egg-info/
+

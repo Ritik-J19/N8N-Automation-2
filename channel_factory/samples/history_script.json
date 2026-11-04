@@ -1,0 +1,48 @@
+{
+  "title": "The Clockwork Sky Beneath the Sea",
+  "channel": "history_en",
+  "content_type": "history_explainer",
+  "language": "en",
+  "topic_id": "hist-antikythera",
+  "summary": "A short introduction to the Antikythera mechanism and what its gears reveal.",
+  "lesson": null,
+  "scenes": [
+    {
+      "scene_id": "scene-1",
+      "narration": "In a shipwreck off a Greek island, divers found a corroded object that would change how historians viewed ancient engineering.",
+      "on_screen_text": "A machine from an ancient shipwreck",
+      "image_prompt": "museum-style view of an ancient corroded geared fragment",
+      "image_file": "scene-1.png",
+      "image_credit": {
+        "source": "Channel Factory sample artwork",
+        "license": "owned",
+        "attribution": "Created for the sample"
+      },
+      "duration_sec": 5
+    },
+    {
+      "scene_id": "scene-2",
+      "narration": "Its surviving gears model astronomical cycles, but researchers still debate some details of its full design and use.",
+      "on_screen_text": "Gears modeled cycles in the sky",
+      "image_prompt": "diagram-like arrangement of bronze gears and a star chart",
+      "image_file": "scene-2.png",
+      "image_credit": {
+        "source": "Channel Factory sample artwork",
+        "license": "owned",
+        "attribution": "Created for the sample"
+      },
+      "duration_sec": 5
+    }
+  ],
+  "safety_flags": [],
+  "disclosure_required": false,
+  "narration_mode": "recorded",
+  "sources": [
+    "Research publication or museum catalogue to be selected during human review"
+  ],
+  "claims_to_verify": [
+    "Exact number and purpose of all original gear trains"
+  ],
+  "hook_type": "mystery_object"
+}
+
